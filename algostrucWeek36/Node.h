@@ -1,22 +1,6 @@
-#include <iostream>
-#include <vector>
-
-template <typename T>
-struct Node {
-    Node* NextNode{nullptr};
-    Node* PrevNode{nullptr};
-    T Value{};
-
-    Node();
-    explicit Node(T NewValue);
+class Node
+{
+    public:
+    int Value;
+    Node* Next;
 };
-
-template <typename T>
-Node<T>::Node() {
-    Value = T();
-}
-
-template <typename T>
-Node<T>::Node(T NewValue) {
-    Value = NewValue;
-}

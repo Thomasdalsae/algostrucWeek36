@@ -1,23 +1,43 @@
 #include <algorithm>
+#include <forward_list>
 #include <strstream>
-#include "Node.h"
+#include <vector>
+#include <iostream>
 
 #include "Node.h"
+using namespace  std;
 int* TaskOne();
 int* TaskTwoPointer();
 int TaskTwoVector();
-int TaskTwoLinkedList();
+void TasktwoLinkedList();
 
-template <typename T>
-int TaskTwoLinkedList()
+void TasktwoLinkedList()
 {
-    Node<T>* Head_{nullptr};
-    Node<T>* Tail_{nullptr};
-    Node<T>* CurrentNode_{nullptr};
-
+    //Node* Head = new Node() ;
     
 
-    
+
+    // Head->Value = 1;
+    // for (int i = 0; i < 50000; ++i)
+    // {
+    // InsertAtEnd(&Head,i);
+    // }
+   
+    //PrintList(Head);
+        forward_list<int> Array;
+        Array.assign(100000,0);
+       auto index = Array.before_begin();
+    for (int i = 0; i <= 100000; ++i)
+    {
+        index = Array.emplace_after(index,i);
+    }
+   
+    int j{};
+    for (auto it = Array.begin(); it != Array.end(); ++it)
+    {
+        std::cout << " List: " << 2 * (*it) << std::endl;
+        j++;
+    }
 }
 
 int TaskTwoVector()
@@ -33,6 +53,7 @@ int TaskTwoVector()
      {
          std::cout << VectorArray[j]*2 << " ";
      }
+    
    return 0;
 }
 int* TaskTwoPointer()
@@ -92,6 +113,7 @@ int main(int argc, char* argv[])
 
     //TaskOne();
     //TaskTwoPointer();
-    TaskTwoVector();
+    //TaskTwoVector();
+    TasktwoLinkedList();
     return 0;
 }
